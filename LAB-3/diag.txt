@@ -1,0 +1,12 @@
+@startuml
+actor "Управляющий" as owner
+boundary "Сайт" as app
+entity "База данных" as data
+actor "Клиент" as trainee
+trainee -> app : Отзыв
+app -> data : Отзыв
+owner -> app: Запрос
+app -> data : Запрос
+data -> app : Отзыв
+app -> owner : Отзыв
+@enduml

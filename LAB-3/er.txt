@@ -1,0 +1,28 @@
+@startuml
+skinparam class {
+	BackgroundColor White
+	ArrowColor Black
+	BorderColor Black
+}
+
+class ControlInfo as "Информационный поток"
+
+class Order as "Отзыв"
+class Date as "Дата"
+class Person as "Клиент"
+class Exhibit as "Изделие"
+class Review as "Отзыв"
+class Data as "База данных"
+
+
+ControlInfo <|-- Data 
+Data <|-- Order
+Order *-- Date
+Order *-- Person
+Order *-- Exhibit
+Order *-- Review
+ 
+hide members
+hide circle
+hide methods
+@enduml
