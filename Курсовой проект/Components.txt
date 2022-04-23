@@ -1,0 +1,15 @@
+@startuml
+[Подписчик] as Sub
+[Брокер] as Bro
+[Издатель] as Pub
+[Сервер данных] as Db
+() "MQTT" as Pro
+() "MQTT" as Prot
+() "SQL" as Lan
+Pub - Pro 
+Pro - Bro
+Bro - Prot
+Prot - Sub
+Bro -- Lan
+Lan -- Db
+@enduml
