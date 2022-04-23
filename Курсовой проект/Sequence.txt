@@ -1,0 +1,32 @@
+@startuml
+actor "Сотрудник" as Emp
+participant "Издатель" as Pub
+participant "Брокер" as Bro
+database "Информационная база на сервере" as Db
+participant "Подписчик" as Sub
+Emp -> Bro : Подключить издателя
+Bro -> Pub : Запрос на соединение
+Pub -> Bro : Соединение
+Bro -> Pub : Подтверждение соединения 
+Emp -> Bro : Подключить подписчика
+Bro -> Sub : Запрос на соединение
+Sub -> Bro : Соединение
+Bro -> Sub : Подтверждение соединения 
+Emp -> Sub: Подписать на топик
+Sub -> Bro : Подписка на топик
+Bro -> Sub : Подтверждение подписки 
+loop
+Pub -> Bro : Публикация по топику
+Bro -> Pub : Принятие публикации
+end
+par
+loop
+Bro -> Db : Запись данных по топику
+Db -> Bro : Подтверждение записи
+end
+loop
+Bro -> Sub : Передача данных по топику
+Sub -> Bro : Подтверждение получения
+end
+end
+@enduml
